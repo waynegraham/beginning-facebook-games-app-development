@@ -1,0 +1,73 @@
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://raw.github.com/necolas/normalize.css/master/normalize.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css"/>
+    <script src="javascript/modernizr-2.0.6.min.js"></script>
+
+    <style>
+      body {
+        /** background-color: #eee; */
+      }
+      .content {
+        border-radius: 0 0 6px 6px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+        margin: 0 -20px;
+        padding: 20px;
+      }
+
+      .page-header{
+        background-color: #f5f5f5;
+        margin: -20px -20px 20px;
+        padding: 20px 20px 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="content">
+        <div class="page-header">
+          <h1>High-Low <small>Javascript Game</small></h1>
+        </div>
+        <div id="game">
+          <p>Guess a number between 0 and 10</p>
+          <form>
+            <div class="clearfix">
+              <label for="guess">Guess</label>
+              <div class="input">
+                <input type="text" class="xlarge" name="guess" />
+                <span class="help-inline label notice"></span>
+              </div>
+              <div class="input">
+                <input id="guesses" class="xlarge disablied" type="disabled" name="guesses" />
+              </div>
+              <div class="actions">
+                <a href="#" value="Guess!" id="guess" class="btn primary">Guess</a>
+
+                <input id="reset" type="reset" value="Reset" class="btn">
+              </div> 
+            </form>
+
+          </div>
+        </div>
+        <footer>
+          <p>&copy; 2011</p>
+        </footer>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+      <script src="./javascript/plugins.js"></script>
+      <script src="./game.js"></script>
+
+   <!--[if lt IE 7 ]>
+    <script defer src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+    <script defer>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
+    <![endif]-->
+    </body>
+  </html>
