@@ -11,13 +11,13 @@ var guesses = 0;
  * @return int void
  */
 function random_number(seed) {
-  seed = seed || 10
+  seed = seed || 10;
   return Math.floor(Math.random() * seed + 1);
 }
 
 function check_guess(guess) {
   var hint = '';
-  var parsedGuess = parseInt(guess); // make sure the guess is a number
+  var parsedGuess = parseInt(guess, 10); // make sure the guess is a number
 
   guesses++;
 
@@ -40,11 +40,11 @@ function reset_count() {
 
 $(document).ready(function() {
   answer = random_number(10);
-  console.log("Answer: " + answer);
+  // console.log("Answer: " + answer);
 
   $("form a").click(function() {
-    guess = $("input:first").val();
-    hint = check_guess(guess);
+    var guess = $("input:first").val();
+    var hint = check_guess(guess);
 
     if(answer == guess) {
       $('#game').before('<div class="alert-message block-message success"><h1>You Win!</h1><br/><a href="#" class="btn">New Game</a></div>');
