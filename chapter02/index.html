@@ -38,20 +38,23 @@
         </div>
         <div id="game">
           <p>Guess a number between 0 and 10</p>
-          <form>
+          <form id="game_form" name="game_form">
             <div class="clearfix">
               <label for="guess">Guess</label>
               <div class="input">
                 <input type="text" class="xlarge" name="guess" />
                 <span class="help-inline label notice"></span>
               </div>
-              <div class="input">
-                <input id="guesses" class="xlarge disablied" type="disabled" name="guesses" />
+            </div>
+              <div class="clearfix">
+                <label for="guesses">Guess Count</label>
+                <div class="input">
+                  <input id="guesses" class="xlarge disablied" type="disabled" name="guesses" />
+                </div>
               </div>
               <div class="actions">
                 <a href="#" value="Guess!" id="guess" class="btn primary">Guess</a>
-
-                <input id="reset" type="reset" value="Reset" class="btn">
+                <input id="reset" type="reset" value="New Game" class="btn reset">
               </div> 
             </form>
 

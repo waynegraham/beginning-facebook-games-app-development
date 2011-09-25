@@ -10,12 +10,12 @@ var guesses = 0;
  * @param int seed Maximum range number to use in generating a random number
  * @return int void
  */
-function random_number(seed) {
+function randomNumber(seed) {
   seed = seed || 10;
   return Math.floor(Math.random() * seed + 1);
 }
 
-function check_guess(guess) {
+function checkGuess(guess) {
   var hint = '';
   var parsedGuess = parseInt(guess, 10); // make sure the guess is a number
 
@@ -33,21 +33,21 @@ function check_guess(guess) {
 
 }
 
-function reset_count() {
-  answer = random_number();
+function resetCount() {
+  answer = randomNumber();
   guesses = 0;
 }
 
 $(document).ready(function() {
-  answer = random_number(10);
+  answer = randomNumber(10);
   // console.log("Answer: " + answer);
 
   $("form a").click(function() {
     var guess = $("input:first").val();
-    var hint = check_guess(guess);
+    var hint = checkGuess(guess);
 
     if(answer == guess) {
-      $('#game').before('<div class="alert-message block-message success"><h1>You Win!</h1><br/><a href="#" class="btn">New Game</a></div>');
+      $('#game').before('<div class="alert-message block-message success"><h1>You Win!</h1><br/><input type="reset" value="New Game" class="btn reset"/></div>');
     }
 
     $('span.help-inline').html(hint);
@@ -55,10 +55,10 @@ $(document).ready(function() {
 
   });
 
-  $("#reset").click(function() {
-    reset_count();
+  $(".reset").click(function() {
+    resetCount();
     $('.alert-message').hide();
-    // $("form").reset();
+    $('.help-inline').html('');
   });
 
 });
