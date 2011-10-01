@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <title>Example1</title>
+    <style type="text/css" media="screen">
+      #example_canvas {
+        width: 800px;
+        height: 600px;
+        border: 1px solid #c0c0c0;
+      }
+    </style>
+
+  </head>
+<body>
+  <canvas id="example_canvas" width="800" height="600"></canvas>
+
+  <script type="text/javascript" charset="utf-8">
+    var canvas = document.getElementById('example_canvas');
+    var c = canvas.getContext('2d');
+
+    c.fillStyle = "black";
+    c.font = '55pt Meddon';
+    c.fillText("Scholars' Lab", 50, 300);
+
+    c.font = '55pt Signerica Fat';
+    c.fillText("Scholars' Lab", 50, 500);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Example3 Triangle</title>
+  <style type="text/css" media="screen">
+    #canvas {
+      border: 1px solid #c0c0c0;
+    }
+  </style>
+  
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script type="text/javascript" charset="utf-8">
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+
+    context.fillStyle = "#fa7b08";
+    context.beginPath();
+    context.moveTo(400, 100);
+    context.lineTo(500, 230);
+    context.lineTo(300, 230);
+    context.closePath();
+    context.fill();
+
+    context.strokeStyle = "rgb(168, 8, 0)";
+    context.lineWidth = 10.0;
+    context.stroke();
+
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Example5: Movement</title>
+  <style type="text/css" media="screen">
+    #canvas {
+      border: 1px solid #c0c0c0;
+    }
+  </style>
+  
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script type="text/javascript" charset="utf-8">
+    var context;
+
+    var WIDTH = 800;
+    var HEIGHT = 600;
+    var x;
+    var y;
+    var dx = 4;
+    var dy = 8;
+
+    function init(canvasId) {
+      context = document.getElementById(canvasId).getContext('2d');
+      setXY();
+      return setInterval(draw, 10);
+    }
+
+    function setXY() {
+      x = randomNumber(WIDTH);
+      y = randomNumber(HEIGHT);
+    }
+
+    function randomNumber(max) {
+      return Math.floor(Math.random() * max + 1);
+    }
+
+    function draw(canvasId) {
+      clear();
+
+      context.fillStyle = "#FAF7F8";
+      drawRectangle(0, 0, WIDTH, HEIGHT);
+
+      context.fillStyle = "blue";
+      drawCircle(x, y, 75);
+
+      context.fillStyle = "green";
+      for(var i = 0; i < 10; i++) {
+        drawCircle(x, y, 10);
+      }
+
+      if (x + dx > WIDTH || x + dx < 0) {
+        dx = -dx;
+      }
+
+      if (y + dy > HEIGHT || y + dy < 0) {
+        dy = -dy;
+      }
+
+      x += dx;
+      y += dy;
+
+    }
+
+    function clear() {
+      context.clearRect(0, 0, WIDTH, HEIGHT);
+    }
+
+    function drawRectangle(x, y, width, height) {
+      context.beginPath();
+     // context.rect(x,  y, width, height);
+      context.closePath();
+      context.fill();
+    }
+
+
+    function drawCircle(x, y, radius) {
+      context.beginPath();
+      context.arc(x, y, radius, 0, Math.PI * 2, true);
+      context.fill();
+    }
+
+    init('canvas');
+
+
+  </script>
+</body>
+</html>
+

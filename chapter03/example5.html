@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <title>Example5: Movement</title>
+  <style type="text/css" media="screen">
+    #canvas {
+      border: 1px solid #c0c0c0;
+    }
+  </style>
+  
+</head>
+<body>
+  <canvas id="canvas" width="800" height="600"></canvas>
+
+  <script type="text/javascript" charset="utf-8">
+
+    function drawRectangle(context, fillStyle) {
+      context.fillStyle = "" || fillStyle;
+
+      context.fillRect(-30, -30, 60, 60);
+      context.globalAlpha = 1.0;
+      context.beginPath();
+      context.moveTo(25, 25);
+      context.lineTo(-25, -25);
+      context.lineTo(25, -25);
+      context.lineTo(-25, 25);
+      context.closePath();
+      context.fill();
+
+    }
+
+    function dot(context) {
+      context.save();
+      context.fillStyle = "black";
+      context.fillRect( -2, -2, 4, 4);
+      context.restore();
+    }
+
+
+    function draw(canvasId) {
+      var canvas = document.getElementById(canvasId);
+      var context = canvas.getContext("2d");
+
+
+      context.translate(45, 45);
+      context.save();
+
+      drawRectangle(context, "red");
+      dot(context);
+      context.restore();
+
+      context.save();
+      console.log(context);
+
+      context.translate(85, 0);
+      context.rotate(135 * Math.Pi / 180);
+      drawRectangle(context, "blue");
+      dot(context);
+      context.restore();
+
+      context.save();
+      context.translate(175, 0);
+      context.rotate(45 * Math.PI / 180);
+      drawRectangle(context, "green");
+      dot(context);
+      context.restore();
+    }
+
+    draw('canvas');
+
+
+  </script>
+</body>
+</html>
