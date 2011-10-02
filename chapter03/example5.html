@@ -17,6 +17,7 @@
 <script type="text/javascript" charset="utf-8">
 
   function drawRectangle(context, fillStyle) {
+    "use strict";
     context.fillStyle = fillStyle || "gray";
 
     context.fillRect(-30, -30, 60, 80);
@@ -31,7 +32,9 @@
 
   }
 
-  function dot(context) {
+function dot(context) {
+"use strict";
+
     context.save();
     context.fillStyle = "black";
     context.fillRect( -2, 8, 4, 4);
@@ -39,7 +42,8 @@
   }
 
 
-  function draw(canvasId) {
+function draw(canvasId) {
+  "use strict";
     var canvas = document.getElementById(canvasId);
     var context = canvas.getContext("2d");
 
