@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <title>Example3 Triangle</title>
+  <title>Triangle</title>
   <style type="text/css" media="screen">
     #canvas {
       border: 1px solid #c0c0c0;
@@ -12,7 +12,7 @@
   
 </head>
 <body>
-  <canvas id="canvas" width="800" height="600"></canvas>
+  <canvas id="canvas" width="500" height="400"></canvas>
 
   <script type="text/javascript" charset="utf-8">
     var canvas = document.getElementById('canvas');
@@ -20,9 +20,9 @@
 
     context.fillStyle = "#fa7b08";
     context.beginPath();
-    context.moveTo(400, 100);
-    context.lineTo(500, 230);
-    context.lineTo(300, 230);
+    context.moveTo(250, 100);
+    context.lineTo(400, 230);
+    context.lineTo(100, 230);
     context.closePath();
     context.fill();
 

@@ -12,65 +12,78 @@
   
 </head>
 <body>
-  <canvas id="canvas" width="800" height="600"></canvas>
+<canvas id="canvas" width="500" height="125"></canvas>
 
-  <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
 
-    function drawRectangle(context, fillStyle) {
-      context.fillStyle = "" || fillStyle;
+  function drawRectangle(context, fillStyle) {
+    context.fillStyle = fillStyle || "gray";
 
-      context.fillRect(-30, -30, 60, 60);
-      context.globalAlpha = 1.0;
-      context.beginPath();
-      context.moveTo(25, 25);
-      context.lineTo(-25, -25);
-      context.lineTo(25, -25);
-      context.lineTo(-25, 25);
-      context.closePath();
-      context.fill();
+    context.fillRect(-30, -30, 60, 80);
+    context.globalAlpha = 1.0;
+    context.beginPath();
+    context.moveTo(25, 30);
+    context.lineTo(-25, -25);
+    context.lineTo(25, -25);
+    context.lineTo(-25, 25);
+    context.closePath();
+    context.fill();
 
-    }
+  }
 
-    function dot(context) {
-      context.save();
-      context.fillStyle = "black";
-      context.fillRect( -2, -2, 4, 4);
-      context.restore();
-    }
-
-
-    function draw(canvasId) {
-      var canvas = document.getElementById(canvasId);
-      var context = canvas.getContext("2d");
+  function dot(context) {
+    context.save();
+    context.fillStyle = "black";
+    context.fillRect( -2, 8, 4, 4);
+    context.restore();
+  }
 
 
-      context.translate(45, 45);
-      context.save();
-
-      drawRectangle(context, "red");
-      dot(context);
-      context.restore();
-
-      context.save();
-      console.log(context);
-
-      context.translate(85, 0);
-      context.rotate(135 * Math.Pi / 180);
-      drawRectangle(context, "blue");
-      dot(context);
-      context.restore();
-
-      context.save();
-      context.translate(175, 0);
-      context.rotate(45 * Math.PI / 180);
-      drawRectangle(context, "green");
-      dot(context);
-      context.restore();
-    }
-
-    draw('canvas');
+  function draw(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    var context = canvas.getContext("2d");
 
 
-  </script>
+    context.translate(45, 45);
+    context.save();
+
+    drawRectangle(context, "red");
+    dot(context);
+    context.restore();
+
+    context.save();
+    context.translate(100, 5);
+    context.rotate(45 * Math.PI / 180);
+    drawRectangle(context, "green");
+    dot(context);
+    context.restore();
+
+    context.save();
+    context.translate(200, 10);
+    context.rotate(90 * Math.PI / 180);
+    drawRectangle(context, "blue");
+    dot(context);
+    context.restore();
+
+    context.save();
+    context.translate(300, 20);
+    context.rotate(135 * Math.PI / 180);
+    drawRectangle(context, "green");
+    dot(context);
+    context.restore();
+
+    context.save();
+    context.translate(400, 0);
+    context.rotate(0 * Math.PI / 180);
+    drawRectangle(context, "red");
+    dot(context);
+    context.restore();
+
+
+  }
+
+  draw('canvas');
+
+</script>
 </body>
 </html>

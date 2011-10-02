@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
-  <title>Example2</title>
+  <title>Draw Rectangle</title>
   <style type="text/css" media="screen">
     #canvas {
       border: 1px solid #c0c0c0;
     }
   </style>
-  
+
 </head>
 <body>
-  <canvas id="canvas" width="800" height="600"></canvas>
+  <canvas id="canvas" width="270" height="270"></canvas>
 
   <script type="text/javascript" charset="utf-8">
     var canvas = document.getElementById('canvas');
     var context = canvas.getContext('2d');
 
-    context.fillStyle = "royalblue"
-    context.fillRect(30, 30, 740, 540);
-
+    context.fillStyle = "gray"
+    context.fillRect(30, 30, 200, 200);
   </script>
 </body>
 </html>
