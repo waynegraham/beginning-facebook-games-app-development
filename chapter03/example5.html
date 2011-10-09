@@ -17,24 +17,12 @@
 <script type="text/javascript" charset="utf-8">
 
   function drawRectangle(context, fillStyle) {
-    "use strict";
     context.fillStyle = fillStyle || "gray";
 
     context.fillRect(-30, -30, 60, 80);
-    context.globalAlpha = 1.0;
-    context.beginPath();
-    context.moveTo(25, 30);
-    context.lineTo(-25, -25);
-    context.lineTo(25, -25);
-    context.lineTo(-25, 25);
-    context.closePath();
-    context.fill();
-
   }
 
 function dot(context) {
-"use strict";
-
     context.save();
     context.fillStyle = "black";
     context.fillRect( -2, 8, 4, 4);
@@ -43,10 +31,7 @@ function dot(context) {
 
 
 function draw(canvasId) {
-  "use strict";
-    var canvas = document.getElementById(canvasId);
-    var context = canvas.getContext("2d");
-
+    var context = document.getElementById(canvasId).canvas.getContext("2d");
 
     context.translate(45, 45);
     context.save();
@@ -82,8 +67,6 @@ function draw(canvasId) {
     drawRectangle(context, "red");
     dot(context);
     context.restore();
-
-
   }
 
   draw('canvas');
