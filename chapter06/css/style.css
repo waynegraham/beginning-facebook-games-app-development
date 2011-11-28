@@ -1,0 +1,12 @@
+#main {
+  width: 61em;
+  max-width: 100%;
+  *zoom: 1;
+  margin: auto;
+}
+
+#game {
+  margin: auto;
+  display: block;
+  border: 1px solid #ccc;
+}
