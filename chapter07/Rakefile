@@ -3,7 +3,7 @@ task :default => :jshint
 desc 'Run JSHint on the codebase'
 task :jshint do
   opts = "maxerr=25,eqeqeq=true"
-  command = "java -jar tools/rhino.jar tools/fulljshint.js"
+  command = "java -jar tools/rhino.jar tools/fulljshint.js "
 
   Dir["js/*.js"].each do |file|
     sh (command + file + " #{opts}")

@@ -10,7 +10,7 @@
   <title>Tic-Tac-Toe</title>
   
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker|Rock+Salt' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Permanent+Marker' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/libs/modernizr-2.0.6.min.js"></script>
 </head>
@@ -19,10 +19,13 @@
 
   <div id="main" role="main">
     <h1>Tic-Tac-Toe</h1>
-    <canvas id="game" width="500" height="500"></canvas>
+    <canvas id="game" width="300" height="300"></canvas>
   </div>
 
-  <script src="js/tictactoe.js"></script>
+  <script src="js/ttt2.js"></script>
+  <script>
+    init('game');
+  </script>
 
   <script src="tools/Stats.js"></script>
 
@@ -32,7 +35,7 @@
       stats.domElement.style.left = '0px';
       stats.domElement.style.top = '0px';
 
-      document.getElementById('main').appendChild( stats.domElement );
+      //document.getElementById('main').appendChild( stats.domElement );
 
       setInterval( function () {
 
