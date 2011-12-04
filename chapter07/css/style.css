@@ -1,0 +1,19 @@
+#main {
+  width: 61em;
+  max-width: 100%;
+  *zoom: 1;
+  margin: auto;
+}
+
+#main h1 {
+  font-family: 'Permanent Marker', cursive; 
+  font-size: 4em;
+  text-align: center;
+}
+
+#game {
+  margin: auto;
+  display: block;
+  border: 1px solid #ccc;
+}
+
