@@ -20,9 +20,17 @@
   <div id="main" role="main">
     <h1>Tic-Tac-Toe</h1>
     <canvas id="game" width="300" height="300"></canvas>
+
+    <div id="scores">
+      <ul>
+        <li><strong>Wins:</strong> <span id="wins">0</span></li>
+        <li><strong>Losses:</strong> <span id="losses">0</span></li>
+        <li><strong>Ties:</strong> <span id="ties">0</span>
+      </ul>
+    </div>
   </div>
 
-  <script src="js/ttt2.js"></script>
+  <script src="js/tictactoe.js"></script>
   <script>
     init('game');
   </script>
@@ -35,7 +43,7 @@
       stats.domElement.style.left = '0px';
       stats.domElement.style.top = '0px';
 
-      //document.getElementById('main').appendChild( stats.domElement );
+      document.getElementById('main').appendChild( stats.domElement );
 
       setInterval( function () {
 

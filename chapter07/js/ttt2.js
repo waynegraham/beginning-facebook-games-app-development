@@ -7,12 +7,6 @@ var xBoard = 0;
 var oBoard = 0;
 var begin = true;
 
-var score = {
-  win: 0,
-  lost: 0,
-  tie: 0
-};
-
 function drawBoard() {
 
   context.beginPath();

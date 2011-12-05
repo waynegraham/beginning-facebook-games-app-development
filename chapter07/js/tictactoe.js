@@ -7,15 +7,36 @@ var xBoard = 0;
 var oBoard = 0;
 var begin = true;
 
+var xSound;
+var oSound;
+
 var score = {
   win: 0,
   lost: 0,
   tie: 0
 };
 
+function loadResources() {
+  xSound = document.createElement("audio");
+  document.body.appendChild(xSound);
+  xSound.setAttribute('src', 'sounds/xSound.wav');
+
+  oSound = document.createElement("audio");
+  document.body.appendChild(oSound);
+  oSound.setAttribute('src', 'sounds/oSound.wav');
+
+}
+
+function incrementScores() {
+  document.getElementById('wins').innerHTML = score.win;
+  document.getElementById('losses').innerHTML = score.lost;
+  document.getElementById('ties').innerHTML = score.tie;
+}
+
 function drawBoard() {
 
   context.beginPath();
+
   context.strokeStyle = 'black';
   context.lineWidth = 4;
 
@@ -69,10 +90,12 @@ function drawX(x, y) {
 
   context.stroke();
   context.closePath();
+
+  xSound.play();
 }
 
-//new
 function drawO(x, y) {
+
   context.beginPath();
 
   context.strokStyle = '#0000ff';
@@ -84,8 +107,8 @@ function drawO(x, y) {
   var beginX = x * (width / 3) + offsetX;
   var beginY = y * (height / 3) + offsetY;
 
-  var endX = (x + 1) * (width / 3) - offsetX * 2;
-  var endY = (y + 1) * (height / 3) - offsetY * 2;
+  var endX = (x + 1) * (width / 3) - offsetX;
+  var endY = (y + 1) * (height / 3) - offsetY;
 
   context.arc(
     beginX + ((endX - beginX) / 2),
@@ -99,10 +122,14 @@ function drawO(x, y) {
   context.stroke();
   context.closePath();
 
+  oSound.play();
+
 }
 
 function restart() {
+  // there's a bug that drops the frame rake in here...
   console.log(score);
+  incrementScores();
   context.clearRect (0, 0, width , height);
   xBoard = 0;
   oBoard = 0;
@@ -163,7 +190,6 @@ function checkWinner(board) {
   return winState;
 }
 
-//new
 function calculateRatio(oBoard, xBoard, player, bit, ratio) {
   var best;
 
@@ -198,8 +224,6 @@ function calculateRatio(oBoard, xBoard, player, bit, ratio) {
   return best;
 }
 
-
-//new
 function simulate(oBoard, xBoard) {
 
   var ratio = 0;
@@ -287,8 +311,9 @@ function init(canvasID) {
   width = canvas.width;
   height = canvas.height;
 
-
   canvas.addEventListener('click', clickHandler); 
 
   drawBoard();
+
+  loadResources();
 }
