@@ -9,10 +9,11 @@ CAAT.modules.initialization.init = function( width, height, canvasId, imageURL, 
      * create a director.
 */
   var director = new CAAT.Director().
-    initialize(
-      width||800,
-  height||600,
-  canvasContainer)
+      initialize(
+        width || 800,
+        height || 600,
+        canvasContainer
+    )
   ;
     /**
      * Load splash images. It is supossed the splash has some images.
@@ -21,7 +22,7 @@ CAAT.modules.initialization.init = function( width, height, canvasId, imageURL, 
     imageURL,
     function on_load( counter, images ) {
 
-      if ( counter==images.length ) {
+      if ( counter == images.length ) {
 
         director.emptyScenes();
         director.setImagesCache(images);
