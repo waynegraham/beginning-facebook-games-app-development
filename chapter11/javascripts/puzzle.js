@@ -5,7 +5,7 @@ var image;
 
 var solved;
 
-var sound;
+var music;
 
 var gameSize;
 var gridSize;
@@ -123,19 +123,17 @@ function init(canvasId, imagePath, gridCount) {
 
 
 function playMusic(musicPath, filename) {
-  sound = new Audio;
+  music = new Audio;
   var soundStub = musicPath + "/" + filename;
   
-  if(sound.canPlayType('audio/ogg')) {
-    sound = new Audio(soundStub + '.ogg');
+  if(music.canPlayType('audio/ogg')) {
+    music = new Audio(soundStub + '.ogg');
   } else if(sound.canPlayType('audio/mp3')) {
-    sound = new Audio(soundStub + '.mp3');
+    music = new Audio(soundStub + '.mp3');
   }
 
-  sound.load();
-  sound.play();
-  console.log(sound);
-
+  music.load();
+  music.play();
 
 }
 
