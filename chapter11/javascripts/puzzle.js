@@ -1,9 +1,11 @@
 var canvas;
 var context;
 
-var img;
+var image;
 
 var solved;
+
+var sound;
 
 var gameSize;
 var gridSize;
@@ -21,9 +23,9 @@ var emptyLoc = {
 };
 
 function setImage(imagePath) {
-  img = new Image();
-  img.src = imagePath;
-  img.addEventListener('load', drawTiles, false);
+  image = new Image();
+  image.src = imagePath;
+  image.addEventListener('load', drawTiles, false);
 }
 
 function addEvents(canvas) {
@@ -33,7 +35,7 @@ function addEvents(canvas) {
   };
 
   canvas.onclick = function() {
-    if (distance(clickLoc.x, clickLoc.y, emptyLoc.x, emptyLoc.y) == 1) {
+    if (distance(clickLoc.x, clickLoc.y, emptyLoc.x, emptyLoc.y) === 1) {
       slideTile(emptyLoc, clickLoc);
       drawTiles();
     }
@@ -48,9 +50,10 @@ function setBoard() {
   for (var i = 0; i < gridSize; ++i) {
     boardParts[i] = new Array(gridSize);
     for (var j = 0; j < gridSize; ++j) {
-      boardParts[i][j] = new Object;
-      boardParts[i][j].x = (gridSize - 1) - i;
-      boardParts[i][j].y = (gridSize - 1) - j;
+      boardParts[i][j] = {
+        x: (gridSize - 1) - i,
+        y: (gridSize - 1) - j
+      };
     }
   }
   emptyLoc.x = boardParts[gridSize - 1][gridSize - 1].x;
@@ -64,8 +67,8 @@ function drawTiles() {
     for (var j = 0; j < gridSize; ++j) {
       var x = boardParts[i][j].x;
       var y = boardParts[i][j].y;
-      if(i != emptyLoc.x || j != emptyLoc.y || solved == true) {
-        context.drawImage(img, x * tileSize, y * tileSize, tileSize, tileSize,
+      if(i != emptyLoc.x || j != emptyLoc.y || solved === true) {
+        context.drawImage(image, x * tileSize, y * tileSize, tileSize, tileSize,
                           i * tileSize, j * tileSize, tileSize, tileSize);
       }
     }
@@ -118,6 +121,28 @@ function init(canvasId, imagePath, gridCount) {
   setBoard();
 }
 
+
+function playMusic(musicPath, filename) {
+  sound = new Audio;
+  var soundStub = musicPath + "/" + filename;
+  
+  if(sound.canPlayType('audio/ogg')) {
+    sound = new Audio(soundStub + '.ogg');
+  } else if(sound.canPlayType('audio/mp3')) {
+    sound = new Audio(soundStub + '.mp3');
+  }
+
+  sound.load();
+  sound.play();
+  console.log(sound);
+
+
+}
+
 init('game', 'images/island.jpg', 3);
+
+playMusic('sounds', 'DST-Rialto');
+
+
 
 
