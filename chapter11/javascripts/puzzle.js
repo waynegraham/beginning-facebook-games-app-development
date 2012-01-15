@@ -67,7 +67,7 @@ function drawTiles() {
     for (var j = 0; j < gridSize; ++j) {
       var x = boardParts[i][j].x;
       var y = boardParts[i][j].y;
-      if(i != emptyLoc.x || j != emptyLoc.y || solved === true) {
+      if(i !== emptyLoc.x || j !== emptyLoc.y || solved === true) {
         context.drawImage(image, x * tileSize, y * tileSize, tileSize, tileSize,
                           i * tileSize, j * tileSize, tileSize, tileSize);
       }
@@ -95,7 +95,7 @@ function checkSolved() {
   var flag = true;
   for (var i = 0; i < gridSize; ++i) {
     for (var j = 0; j < gridSize; ++j) {
-      if (boardParts[i][j].x != i || boardParts[i][j].y != j) {
+      if (boardParts[i][j].x !== i || boardParts[i][j].y !== j) {
         flag = false;
       }
     }
@@ -123,12 +123,12 @@ function init(canvasId, imagePath, gridCount) {
 
 
 function playMusic(musicPath, filename) {
-  music = new Audio;
+  music = new Audio();
   var soundStub = musicPath + "/" + filename;
   
   if(music.canPlayType('audio/ogg')) {
     music = new Audio(soundStub + '.ogg');
-  } else if(sound.canPlayType('audio/mp3')) {
+  } else if(music.canPlayType('audio/mp3')) {
     music = new Audio(soundStub + '.mp3');
   }
 
@@ -137,9 +137,14 @@ function playMusic(musicPath, filename) {
 
 }
 
-init('game', 'images/island.jpg', 3);
+//playMusic('sounds', 'DST-Rialto');
 
-playMusic('sounds', 'DST-Rialto');
+/**
+ * document.getElementById('pause').onclick = (function(event) {
+ * music.pause();
+ * });
+ */
+
 
 
 
