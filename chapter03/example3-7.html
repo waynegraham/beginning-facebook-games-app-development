@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-  <title>Keyboard Bindings</title>
+  <title>Example 3-7: Keyboard Bindings</title>
   <style type="text/css" media="all">
     #canvas {
       border: 1px solid #c0c0c0;
@@ -15,7 +15,7 @@
   <canvas id="canvas" width="500" height="400"></canvas>
 
   <script type="text/javascript" charset="utf-8">
-    var context = document.getElementById('canvas').getContext('2d');
+    var context;
     var x = 100;
     var y = 150;
     var dx = 5;
@@ -23,13 +23,13 @@
     const HEIGHT = 400;
     const WIDTH = 500;
 
-    function init() {
+    function init(canvasID) {
+      context = document.getElementById(canvasID).getContext('2d');
+      window.addEventListener('keydown', keyDown, true);
       return setInterval(draw, 10);
     }
 
     function keyDown(event) {
-
-      console.log(event.keyCode);
 
       switch(event.keyCode) {
         case 87: // w
@@ -79,8 +79,7 @@
       rectangle(x, y, 30, 50);
     }
 
-    init();
-    window.addEventListener('keydown', keyDown, true);
+    init('canvas');
 
   </script>
 
