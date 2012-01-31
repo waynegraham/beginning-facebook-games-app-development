@@ -10,6 +10,8 @@ var CoinEntity = me.CollectableEntity.extend({
   // called by the engine when an object is destroyed
   onDestroyEvent: function() {
     // do something when collected
+    me.audio.play('coin1');
+
     me.game.HUD.updateItemValue('score', 250);
   }
 });

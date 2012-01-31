@@ -25,7 +25,9 @@ var PlayerEntity = me.ObjectEntity.extend({
     }
 
     if (me.input.isKeyPressed('jump')) {
-      this.doJump();
+      if (this.doJump()) {
+        me.audio.play('Mario_Jumping');
+      }
     }
 
     // check and update player movement
@@ -40,6 +42,7 @@ var PlayerEntity = me.ObjectEntity.extend({
         // check if enemy was jumped on
         if ((res.y > 0) && ! this.jumping) {
           // bounce
+          me.audio.play('Bounce');
           this.forceJump();
         } else {
           // flicker when touched

@@ -26,11 +26,35 @@ var g_resources = [{
 }, {
   name: "wheelie_right",
   type: "image",
-  src: "data/gfxlib-fuzed/Sprites/wheelie_right.png"
+  src: "data/gfxlib-fuzed/sprites/wheelie_right.png"
 }, {
   name: '16x16_font',
   type: 'image',
-  src: 'data/gfxlib-fuzed/Sprites/16x16_font.png'
+  src: 'data/gfxlib-fuzed/sprites/16x16_font.png'
+}, {
+  name: 'DST-GameOn',
+  type: 'audio',
+  src: 'data/audio/',
+  channel: 1
+}, {
+  name: 'Bounce',
+  type: 'audio',
+  src: 'data/audio/',
+  channel: 1
+}, {
+  name: 'coin1',
+  type: 'audio',
+  src: 'data/audio/',
+  channel: 1
+}, {
+  name: 'Mario_Jumping',
+  type: 'audio',
+  src: 'data/audio/',
+  channel: 1
+}, {
+  name: 'title_screen',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/GUI/title_screen.jpg'
 }
 ];
 
@@ -60,6 +84,8 @@ var jsApp = {
   // callback when everything is loaded
 
   loaded: function() {
+    me.state.set(me.state.MENU, new TitleScreen());
+
     // set the "Play/Ingame" Screen Object
     me.state.set(me.state.PLAY, new PlayScreen());
 
@@ -78,7 +104,7 @@ var jsApp = {
     //me.debug.renderHitBox = true;
 
     // start the game
-    me.state.change(me.state.PLAY);
+    me.state.change(me.state.MENU);
   }
 
 };// jsApp
@@ -94,11 +120,16 @@ var PlayScreen = me.ScreenObject.extend({
     me.game.HUD.addItem("score", new ScoreObject(620, 10));
 
     me.game.sort();
+
+    me.audio.playTrack('DST-GameOn');
   },
 
   // action to perform when game is finished (state change)
   onDestroyEvent: function() {
     me.game.disableHUD();
+
+    // stop the music
+    me.audio.stopTrack();
   }
 
 });

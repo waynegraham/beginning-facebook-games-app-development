@@ -53,6 +53,13 @@
     <property name="transparency" value="'#FF00FF'"/>
    </properties>
   </object>
+  <object name="me.LevelEntity" x="672" y="288" width="64" height="64">
+   <properties>
+    <property name="duration" value="250"/>
+    <property name="fade" value="#000000"/>
+    <property name="to" value="area02"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer name="collision" width="80" height="30" visible="0">
   <data encoding="base64">
