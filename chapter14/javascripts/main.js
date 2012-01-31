@@ -19,6 +19,14 @@ var g_resources = [{
   name: "area01_bkg1",
   type: "image",
   src: "data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg1.png"
+}, {
+  name: "spinning_coin_gold",
+  type: "image",
+  src: "data/gfxlib-fuzed/Sprites/spinning_coin_gold.png"
+}, {
+  name: "wheelie_right",
+  type: "image",
+  src: "data/gfxlib-fuzed/Sprites/wheelie_right.png"
 }
 ];
 
@@ -28,12 +36,12 @@ var jsApp = {
 
     // init the video
     if (!me.video.init('jsapp', 640, 480, false, 1.0)) {
-      alert("Sorry but your browser does not support html 5 canvas.");
+      alert('Sorry but your browser does not support html 5 canvas.');
       return;
     }
 
     // initialize the "audio"
-    me.audio.init("mp3,ogg");
+    me.audio.init('mp3,ogg');
 
     // set all resources to be loaded
     me.loader.onload = this.loaded.bind(this);
@@ -53,11 +61,14 @@ var jsApp = {
 
     // add the player to the entity pool
     me.entityPool.add('mainPlayer', PlayerEntity);
+    me.entityPool.add('CoinEntity', CoinEntity);
+    me.entityPool.add('EnemyEntity', EnemyEntity);
+
 
     // bind to the keyboard
-    me.input.bindKey(me.input.KEY.LEFT, "left");
-    me.input.bindKey(me.input.KEY.RIGHT, "right");
-    me.input.bindKey(me.input.KEY.X, "jump", true);
+    me.input.bindKey(me.input.KEY.LEFT, 'left');
+    me.input.bindKey(me.input.KEY.RIGHT, 'right');
+    me.input.bindKey(me.input.KEY.X, 'jump', true);
 
     // debugging
     me.debug.renderHitBox = true;
@@ -73,7 +84,7 @@ var PlayScreen = me.ScreenObject.extend({
 
   onResetEvent: function() {
     // stuff to reset on state change
-    me.levelDirector.loadLevel("area01");
+    me.levelDirector.loadLevel('area01');
   },
 
   // action to perform when game is finished (state change)
