@@ -11,6 +11,14 @@ var g_resources = [{
   name: "gripe_run_right",
   type: "image",
   src: "data/gfxlib-fuzed/Sprites/gripe.run_right.png"
+}, {
+  name: "area01_bkg0",
+  type: "image",
+  src: "data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg0.png"
+}, {
+  name: "area01_bkg1",
+  type: "image",
+  src: "data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg1.png"
 }
 ];
 
