@@ -27,6 +27,10 @@ var g_resources = [{
   name: "wheelie_right",
   type: "image",
   src: "data/gfxlib-fuzed/Sprites/wheelie_right.png"
+}, {
+  name: '16x16_font',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/Sprites/16x16_font.png'
 }
 ];
 
@@ -71,7 +75,7 @@ var jsApp = {
     me.input.bindKey(me.input.KEY.X, 'jump', true);
 
     // debugging
-    me.debug.renderHitBox = true;
+    //me.debug.renderHitBox = true;
 
     // start the game
     me.state.change(me.state.PLAY);
@@ -85,10 +89,16 @@ var PlayScreen = me.ScreenObject.extend({
   onResetEvent: function() {
     // stuff to reset on state change
     me.levelDirector.loadLevel('area01');
+
+    me.game.addHUD(0, 430, 640, 60);
+    me.game.HUD.addItem("score", new ScoreObject(620, 10));
+
+    me.game.sort();
   },
 
   // action to perform when game is finished (state change)
   onDestroyEvent: function() {
+    me.game.disableHUD();
   }
 
 });
