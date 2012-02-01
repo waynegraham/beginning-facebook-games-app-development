@@ -38,7 +38,7 @@ var PlayerEntity = me.ObjectEntity.extend({
 
     if (res) {
       // collide with an enemy
-      if (res.obj.type == me.game.ENEMY_OBJECT) {
+      if (res.obj.type === me.game.ENEMY_OBJECT) {
         // check if enemy was jumped on
         if ((res.y > 0) && ! this.jumping) {
           // bounce

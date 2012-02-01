@@ -1,32 +1,32 @@
 // game resources
 var g_resources = [{
-  name: "area01_level_tiles",
-  type: "image",
-  src: "data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_tileset/area01_level_tiles.png"
+  name: 'area01_level_tiles',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_tileset/area01_level_tiles.png'
 }, {
-  name: "area01",
-  type: "tmx",
-  src: "data/area01.tmx"
+  name: 'area01',
+  type: 'tmx',
+  src: 'data/area01.tmx'
 }, {
-  name: "gripe_run_right",
-  type: "image",
-  src: "data/gfxlib-fuzed/Sprites/gripe.run_right.png"
+  name: 'gripe_run_right',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/Sprites/gripe.run_right.png'
 }, {
-  name: "area01_bkg0",
-  type: "image",
-  src: "data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg0.png"
+  name: 'area01_bkg0',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg0.png'
 }, {
-  name: "area01_bkg1",
-  type: "image",
-  src: "data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg1.png"
+  name: 'area01_bkg1',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/Backgrounds/lev01_checkers/area01_parallax/area01_bkg1.png'
 }, {
-  name: "spinning_coin_gold",
-  type: "image",
-  src: "data/gfxlib-fuzed/Sprites/spinning_coin_gold.png"
+  name: 'spinning_coin_gold',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/Sprites/spinning_coin_gold.png'
 }, {
-  name: "wheelie_right",
-  type: "image",
-  src: "data/gfxlib-fuzed/sprites/wheelie_right.png"
+  name: 'wheelie_right',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/sprites/wheelie_right.png'
 }, {
   name: '16x16_font',
   type: 'image',
@@ -68,7 +68,7 @@ var jsApp = {
       return;
     }
 
-    // initialize the "audio"
+    // initialize the 'audio'
     me.audio.init('mp3,ogg');
 
     // set all resources to be loaded
@@ -86,7 +86,7 @@ var jsApp = {
   loaded: function() {
     me.state.set(me.state.MENU, new TitleScreen());
 
-    // set the "Play/Ingame" Screen Object
+    // set the 'Play/Ingame' Screen Object
     me.state.set(me.state.PLAY, new PlayScreen());
 
     // add the player to the entity pool
@@ -117,7 +117,7 @@ var PlayScreen = me.ScreenObject.extend({
     me.levelDirector.loadLevel('area01');
 
     me.game.addHUD(0, 430, 640, 60);
-    me.game.HUD.addItem("score", new ScoreObject(620, 10));
+    me.game.HUD.addItem('score', new ScoreObject(620, 10));
 
     me.game.sort();
 

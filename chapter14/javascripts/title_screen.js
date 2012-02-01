@@ -15,7 +15,7 @@ var TitleScreen = me.ScreenObject.extend({
   },
 
   onResetEvent: function() {
-    if (this.title == null) {
+    if (this.title === null) {
       this.title = me.loader.getImage('title_screen');
 
       // font to use
