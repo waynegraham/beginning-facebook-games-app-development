@@ -26,11 +26,11 @@ var g_resources = [{
 }, {
   name: 'wheelie_right',
   type: 'image',
-  src: 'data/gfxlib-fuzed/sprites/wheelie_right.png'
+  src: 'data/gfxlib-fuzed/Sprites/wheelie_right.png'
 }, {
   name: '16x16_font',
   type: 'image',
-  src: 'data/gfxlib-fuzed/sprites/16x16_font.png'
+  src: 'data/gfxlib-fuzed/Sprites/16x16_font.png'
 }, {
   name: 'DST-GameOn',
   type: 'audio',
