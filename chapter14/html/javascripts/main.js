@@ -55,6 +55,10 @@ var g_resources = [{
   name: 'title_screen',
   type: 'image',
   src: 'data/gfxlib-fuzed/GUI/title_screen.jpg'
+}, {
+  name: 'game_over',
+  type: 'image',
+  src: 'data/gfxlib-fuzed/GUI/generic_menus.jpg'
 }
 ];
 
@@ -89,6 +93,9 @@ var jsApp = {
     // set the 'Play/Ingame' Screen Object
     me.state.set(me.state.PLAY, new PlayScreen());
 
+    // game over
+    me.state.set(me.state.GAMEOVER, new GameOverScreen());
+
     // add the player to the entity pool
     me.entityPool.add('mainPlayer', PlayerEntity);
     me.entityPool.add('CoinEntity', CoinEntity);
@@ -100,11 +107,38 @@ var jsApp = {
     me.input.bindKey(me.input.KEY.RIGHT, 'right');
     me.input.bindKey(me.input.KEY.X, 'jump', true);
 
-    // debugging
+    // create a gamestat for score
+    me.gamestat.add('highscore', this.readHighScore());
+
     //me.debug.renderHitBox = true;
 
     // start the game
     me.state.change(me.state.MENU);
+  },
+
+  // write High score
+  writeHighScore: function(val) {
+    if (me.sys.localStorage) {
+      try {
+        localValue = this.readHighScore();
+        if (val > localValue) {
+          localStorage.setItem('fuzed_highscore', val);
+        }
+      } catch (e) {
+        // no save
+      }
+    }
+  },
+
+  // read score from local storage
+  readHighScore: function() {
+    if (me.sys.localStorage) {
+      try {
+        return localStorage.getItem('fuzed_highscore') || 0;
+      } catch (e) {}
+    }
+
+    return false;
   }
 
 };// jsApp
@@ -119,6 +153,8 @@ var PlayScreen = me.ScreenObject.extend({
     me.game.addHUD(0, 430, 640, 60);
     me.game.HUD.addItem('score', new ScoreObject(620, 10));
 
+    me.game.HUD.addItem('highscore', new HighScoreObject(10, 10, me.gamestat.getItemValue('highscore')));
+
     me.game.sort();
 
     me.audio.playTrack('DST-GameOn');
@@ -126,7 +162,12 @@ var PlayScreen = me.ScreenObject.extend({
 
   // action to perform when game is finished (state change)
   onDestroyEvent: function() {
+    jsApp.writeHighScore(me.gamestat.getItemValue('highscore'));
+
+
     me.game.disableHUD();
+
+    console.log(me.gamestat.getItemValue('highscore'));
 
     // stop the music
     me.audio.stopTrack();
@@ -137,3 +178,6 @@ var PlayScreen = me.ScreenObject.extend({
 window.onReady(function() {
   jsApp.onload();
 });
+
+
+

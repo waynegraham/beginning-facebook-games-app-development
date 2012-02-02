@@ -3,15 +3,15 @@ var TitleScreen = me.ScreenObject.extend({
   init: function() {
     this.parent(true);
 
-        // title screen image
-        this.title = null;
+    // title screen image
+    this.title = null;
 
-        this.font = null;
-        this.scrollerfont = null;
-        this.scrollertween = null;
+    this.font = null;
+    this.scrollerfont = null;
+    this.scrollertween = null;
 
-        this.scroller = 'AN EXAMPLE FACEBOOK GAME USING THE MELONJS GAME ENGINE      ';
-        this.scrollerpos = 600;
+    this.scroller = 'AN EXAMPLE FACEBOOK GAME USING THE MELONJS GAME ENGINE      ';
+    this.scrollerpos = 600;
   },
 
   onResetEvent: function() {
@@ -72,3 +72,6 @@ var TitleScreen = me.ScreenObject.extend({
     this.scrollertween.stop();
   }
 });
+
+
+

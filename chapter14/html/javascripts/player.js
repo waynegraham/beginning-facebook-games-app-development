@@ -45,8 +45,9 @@ var PlayerEntity = me.ObjectEntity.extend({
           me.audio.play('Bounce');
           this.forceJump();
         } else {
+          me.state.change(me.state.GAMEOVER);
           // flicker when touched
-          this.flicker(45);
+          //this.flicker(45);
         }
       }
     }
