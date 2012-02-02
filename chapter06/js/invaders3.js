@@ -19,7 +19,7 @@ var keyboard = {};
 
 var lasers = [];
 var invaders = [];
-var invaderMissles = [];
+var invaderMissiles = [];
 
 var spaceship_image;
 var invader_image;
@@ -90,9 +90,9 @@ function addInvaderMissle(invader){
   };
 }
 
-function drawInvaderMissles() {
-  for(var iter in invaderMissles) {
-    var missle = invaderMissles[iter];
+function drawInvaderMissiles() {
+  for(var iter in invaderMissiles) {
+    var missle = invaderMissiles[iter];
 
     context.drawImage(
       missle_image,
@@ -101,9 +101,9 @@ function drawInvaderMissles() {
   }
 }
 
-function updateInvaderMissles() {
-  for(var iter in invaderMissles) {
-    var laser = invaderMissles[iter];
+function updateInvaderMissiles() {
+  for(var iter in invaderMissiles) {
+    var laser = invaderMissiles[iter];
     laser.y += 1;
     laser.counter++;
   }
@@ -143,7 +143,7 @@ function updateInvaders() {
 
       // fire every
       if((invader.counter + invader.phase) % 200 === 0) {
-        invaderMissles.push(addInvaderMissle(invader));
+        invaderMissiles.push(addInvaderMissle(invader));
       }
     }
 
@@ -160,7 +160,7 @@ function updateInvaders() {
   }
 
   invaders = invaders.filter(function(event) {
-    if(event && event.state !== "dead") { return true; }
+    if (event && event.state !== 'dead') { return true; }
     return false;
   });
 
@@ -224,7 +224,7 @@ function fireLaser() {
 }
 
 function updateSpaceship() {
-  if(spaceship.state === "dead") {
+  if (spaceship.state === 'dead') {
     return;
   }
 
@@ -354,8 +354,8 @@ function checkHits() {
     return;
   }
 
-  for(var iter2 in invaderMissles) {
-    var missle = invaderMissles[iter2];
+  for(var iter2 in invaderMissiles) {
+    var missle = invaderMissiles[iter2];
     if(hit(missle, spaceship)) {
       missle.state = "hit";
       spaceship.state = "hit";
@@ -426,7 +426,7 @@ function gameLoop() {
   updateSpaceship();
 
   updateLasers();
-  updateInvaderMissles();
+  updateInvaderMissiles();
 
   checkHits();
 
@@ -434,7 +434,7 @@ function gameLoop() {
   drawSpaceship();
   drawInvaders();
 
-  drawInvaderMissles();
+  drawInvaderMissiles();
   drawLasers();
   drawTextOverlay();
 }
