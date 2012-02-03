@@ -17,11 +17,11 @@ var score = {
 };
 
 function loadResources() {
-  xSound = document.createElement("audio");
+  xSound = document.createElement('audio');
   document.body.appendChild(xSound);
   xSound.setAttribute('src', 'sounds/xSound.wav');
 
-  oSound = document.createElement("audio");
+  oSound = document.createElement('audio');
   document.body.appendChild(oSound);
   oSound.setAttribute('src', 'sounds/oSound.wav');
 
@@ -83,7 +83,7 @@ function drawX(x, y) {
   var endY = (y + 1) * (height / 3) - offsetY;
 
   context.moveTo(beginX, beginY);
-  context.lineTo(endX, endY); 
+  context.lineTo(endX, endY);
 
   context.moveTo(beginX, endY);
   context.lineTo(endX, beginY);
@@ -127,10 +127,8 @@ function drawO(x, y) {
 }
 
 function restart() {
-  // there's a bug that drops the frame rake in here...
-  console.log(score);
   incrementScores();
-  context.clearRect (0, 0, width , height);
+  context.clearRect(0, 0, width, height);
   xBoard = 0;
   oBoard = 0;
   drawBoard();
@@ -139,7 +137,7 @@ function restart() {
 function checkTie() {
   var tie = false;
 
-  if((xBoard | oBoard) === 0x1FF) {
+  if ((xBoard | oBoard) === 0x1FF) {
     alert('We tied...');
     score.tie++;
     restart();
@@ -153,16 +151,16 @@ function markBit(bitMask, player) {
   var x = 0;
   var y = 0;
 
-  while((bitMask & bit) === 0) {
+  while ((bitMask & bit) === 0) {
     bit = bit << 1;
     x++;
-    if(x > 2) {
+    if (x > 2) {
       x = 0;
       y++;
     }
   }
 
-  if(player === 'O') {
+  if (player === 'O') {
     oBoard = oBoard | bit;
     drawO(x, y);
   } else {
@@ -177,15 +175,15 @@ function checkWinner(board) {
 
     if (
       ((board | 0x1C0) === board) ||
-      ((board | 0x38 ) === board) ||
+      ((board | 0x38) === board) ||
       ((board | 0x7) === board) ||
       ((board | 0x124) === board) ||
       ((board | 0x92) === board) ||
       ((board | 0x49) === board) ||
-      ((board | 0x111) === board) || 
-      ((board | 0x54) === board)){
-      winState = true;
-  }
+      ((board | 0x111) === board) ||
+      ((board | 0x54) === board)) {
+        winState = true;
+      }
 
   return winState;
 }
@@ -193,13 +191,13 @@ function checkWinner(board) {
 function calculateRatio(oBoard, xBoard, player, bit, ratio) {
   var best;
 
-  if(player === 'O') {
+  if (player === 'O') {
     oBoard = oBoard | bit;
   } else {
     xBoard = xBoard | bit;
   }
 
-  if(checkWinner(oBoard)) {
+  if (checkWinner(oBoard)) {
     ratio *= 1.1;
     best = ratio;
   } else if (checkWinner(xBoard)) {
@@ -209,18 +207,17 @@ function calculateRatio(oBoard, xBoard, player, bit, ratio) {
     best = 0;
     ratio *= 0.6;
 
-    for(var iter = 0; iter < 9; iter++) {
-      if(isEmpty(xBoard, oBoard, 1 << iter)) {
+    for (var iter = 0; iter < 9; iter++) {
+      if (isEmpty(xBoard, oBoard, 1 << iter)) {
         var newPlayer = player === 'O' ? 'X' : 'O';
         var newRatio = calculateRatio(oBoard, xBoard, newPlayer, 1 << iter, ratio);
 
-        if(best === 0 || best < newRatio) {
+        if (best === 0 || best < newRatio) {
           best = newRatio;
         }
       }
     }
   }
-
   return best;
 }
 
@@ -231,7 +228,7 @@ function simulate(oBoard, xBoard) {
   var bit = 0;
   var checkbit;
 
-  for (var i= 0; i < 9; i++) {
+  for (var i = 0; i < 9; i++) {
 
     checkBit = 1 << i;
 
@@ -242,7 +239,7 @@ function simulate(oBoard, xBoard) {
         break;
       } else if (checkWinner(xBoard | checkBit)) {
         bit = checkBit;
-      } 
+      }
     }
   }
 
@@ -258,19 +255,19 @@ function simulate(oBoard, xBoard) {
         }
       }
     }
-  }	
+  }
   return bit;
 }
 
-function play(){
+function play() {
   var bestPlay = simulate(oBoard, xBoard);
   markBit(bestPlay, 'O');
 }
 
 function clickHandler(event) {
 
-  var x = Math.floor((event.clientX - canvas.offsetLeft) / (width/ 3));
-  var y = Math.floor((event.clientY - canvas.offsetTop) / (height/ 3));
+  var x = Math.floor((event.clientX - canvas.offsetLeft) / (width / 3));
+  var y = Math.floor((event.clientY - canvas.offsetTop) / (height / 3));
 
   var bit = (1 << x + (y * 3));
 
@@ -278,7 +275,7 @@ function clickHandler(event) {
 
     markBit(bit, 'X');
 
-    if (!checkTie())  {
+    if (!checkTie()) {
       if (checkWinner(xBoard)) {
 
         alert('You Win!!');
