@@ -311,7 +311,7 @@ function init(canvasID) {
   width = canvas.width;
   height = canvas.height;
 
-  canvas.addEventListener('click', clickHandler); 
+  canvas.addEventListener('click', clickHandler);
 
   drawBoard();
 
