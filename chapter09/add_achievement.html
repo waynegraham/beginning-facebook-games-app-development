@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+  <title>Add Achievement</title>
+
+  <meta property="fb:app_id" content="APP_ID">
+  <meta property="og:type" content="game.achievement">
+  <meta property="og:title" content="Dummy Achievement">
+  <meta property="og:url" content="http://www.yourdomain.com/path/to/achievement.html">
+  <meta property="og:description" content="Power up. I clicked on something.">
+  <meta property="og:image" content="http://placekitten.com/g/100/100">
+  <meta property="game.points" content="1">
+
+  <style>
+    h3 { font-size: 30px; font: verdana; color: gray; }
+  </style>
+</head>
+<body>
+  <div id="fb-root"></div>
+
+  <fb:add-to-timeline></fb:add-to-timeline>
+
+  <h3>Dummy Achievement</h3>
+
+  <p><img title="Dummy Achievement" src="http://placekitten.com/g/550/400" /></p>
+
+  <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <script>
+    FB.init({
+      app_id: 'your app id',
+      cookie: true,
+      statue: true,
+      xfbml: true, // parse xfbml tags like fb:add-to-timeline
+      oauth: true
+    });
+
+</body>
+</html>

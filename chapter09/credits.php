@@ -22,7 +22,7 @@ require_once('utils.php');
     var app_id = '<?php echo AppInfo::appId(); ?>';
 
     FB.init({appId: app_id, status: true, cookie: true});
-    
+
     function purchaseCredits() {
       var obj = {
         method: 'pay',
