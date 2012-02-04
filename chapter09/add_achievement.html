@@ -14,7 +14,7 @@
   <meta property="game.points" content="1">
 
   <style>
-    h3 { font-size: 30px; font: verdana; color: gray; }
+    h3 { font-size: 30px; font-family: verdana, sans-serif; color: gray; }
   </style>
 </head>
 <body>
@@ -26,7 +26,11 @@
 
   <p><img title="Dummy Achievement" src="http://placekitten.com/g/550/400" /></p>
 
-  <script src="http://connect.facebook.net/en_US/all.js"></script>
+  <form>
+    <input type="button" value="Get Achievement" onclick="postAchievement();" />
+  </form>
+
+  <script src="https://connect.facebook.net/en_US/all.js"></script>
   <script>
     FB.init({
       app_id: 'your app id',
@@ -35,6 +39,22 @@
       xfbml: true, // parse xfbml tags like fb:add-to-timeline
       oauth: true
     });
+  </script>
+
+  <script>
+    function postAchievement() {
+      FB.api('/me/YOUR_NAMESPACE:earn' +
+        '?achievement=http://yourdomain.com/add_achievement.html',
+        'post',
+        function(response) {
+          if (!response || response.error) {
+            alert('Oh no, something went wrong.');
+          } else {
+            alert('Sucess! Action ID: ' + response.id);
+          }
+        });
+      }
+    </script>
 
 </body>
 </html>
