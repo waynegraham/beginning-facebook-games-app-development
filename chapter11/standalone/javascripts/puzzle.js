@@ -40,7 +40,7 @@ function addEvents(canvas) {
       drawTiles();
     }
     if (solved) {
-      setTimeout(function() {alert("You solved it!");}, 500);
+      setTimeout(function() {alert('You solved it!');}, 500);
     }
   };
 }
@@ -62,12 +62,12 @@ function setBoard() {
 }
 
 function drawTiles() {
-  context.clearRect ( 0 , 0 , gameSize , gameSize );
+  context.clearRect(0, 0, gameSize, gameSize);
   for (var i = 0; i < gridSize; ++i) {
     for (var j = 0; j < gridSize; ++j) {
       var x = boardParts[i][j].x;
       var y = boardParts[i][j].y;
-      if(i !== emptyLoc.x || j !== emptyLoc.y || solved === true) {
+      if (i !== emptyLoc.x || j !== emptyLoc.y || solved === true) {
         context.drawImage(image, x * tileSize, y * tileSize, tileSize, tileSize,
                           i * tileSize, j * tileSize, tileSize, tileSize);
       }
@@ -92,15 +92,14 @@ function slideTile(toLoc, fromLoc) {
 }
 
 function checkSolved() {
-  var flag = true;
   for (var i = 0; i < gridSize; ++i) {
     for (var j = 0; j < gridSize; ++j) {
       if (boardParts[i][j].x !== i || boardParts[i][j].y !== j) {
-        flag = false;
+        solved = false;
       }
     }
   }
-  solved = flag;
+  solved = true;
 }
 
 function init(canvasId, imagePath, gridCount) {
@@ -124,11 +123,11 @@ function init(canvasId, imagePath, gridCount) {
 
 function playMusic(musicPath, filename) {
   music = new Audio();
-  var soundStub = musicPath + "/" + filename;
-  
-  if(music.canPlayType('audio/ogg')) {
+  var soundStub = musicPath + '/' + filename;
+
+  if (music.canPlayType('audio/ogg')) {
     music = new Audio(soundStub + '.ogg');
-  } else if(music.canPlayType('audio/mp3')) {
+  } else if (music.canPlayType('audio/mp3')) {
     music = new Audio(soundStub + '.mp3');
   }
 
@@ -137,13 +136,16 @@ function playMusic(musicPath, filename) {
 
 }
 
-//playMusic('sounds', 'DST-Rialto');
+playMusic('sounds', 'DST-Rialto');
 
-/**
- * document.getElementById('pause').onclick = (function(event) {
- * music.pause();
- * });
- */
+
+document.getElementById('pause').onclick = (function(event) {
+  music.pause();
+});
+
+document.getElementById('play').onclick = (function(event) {
+  music.play();
+});
 
 
 
