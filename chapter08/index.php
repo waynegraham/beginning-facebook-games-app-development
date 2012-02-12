@@ -106,6 +106,44 @@ $app_name = idx($app_info, 'name', '');
 
     <script type="text/javascript" src="/javascript/jquery-1.7.1.min.js"></script>
 
+    <script>
+      $(document).ready(function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        //var centroid = position.coords.latitude + ',' + position.coords.longitude;
+        var centroid = '38.037783,-78.505297';
+
+      var url = 'https://graph.facebook.com/search';
+      var coffeeShops = [];
+
+      $.getJSON(
+        url,
+        {
+          q: 'coffee',
+          type: 'place',
+          center: centroid,
+          access_token: '<?php echo $facebook->getAccessToken();?>',
+          distance: 1000
+        },
+
+        function(data) {
+          $.each(data.data, function(i, item) {
+            coffeeShops.push('<li id="' + item.id + '">' + item.name + '</li>');
+          });
+
+          $('<ul/>', {
+            'class': 'coffee-list',
+            html: coffeeShops.join('')
+          }).prependTo('body');
+
+        }); // getJSON
+    }); // getCurrentPosition
+  } // navigator check
+});
+
+    </script>
+    
     <script type="text/javascript">
       function logResponse(response) {
         if (console && console.log) {
