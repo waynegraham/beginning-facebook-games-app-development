@@ -108,41 +108,41 @@ $app_name = idx($app_info, 'name', '');
 
     <script>
       $(document).ready(function() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        //var centroid = position.coords.latitude + ',' + position.coords.longitude;
-        var centroid = '38.037783,-78.505297';
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            function(position) {
+              var centroid = position.coords.latitude + ',' + position.coords.longitude;
+              //var centroid = '38.037783,-78.505297';
 
-      var url = 'https://graph.facebook.com/search';
-      var coffeeShops = [];
+              var url = 'https://graph.facebook.com/search';
+              var coffeeShops = [];
 
-      $.getJSON(
-        url,
-        {
-          q: 'coffee',
-          type: 'place',
-          center: centroid,
-          access_token: '<?php echo $facebook->getAccessToken();?>',
-          distance: 1000
-        },
+              $.getJSON(
+                url,
+                {
+                  q: 'coffee',
+                  type: 'place',
+                  center: centroid,
+                  access_token: '<?php echo $facebook->getAccessToken();?>',
+                  distance: 1000
+                },
 
-        function(data) {
-          $.each(data.data, function(i, item) {
-            coffeeShops.push('<li id="' + item.id + '">' + item.name + '</li>');
-          });
+                function(data) {
+                  $.each(data.data, function(i, item) {
+                  coffeeShops.push('<li id="' + item.id + '">' + item.name + '</li>');
+                });
 
-          $('<ul/>', {
-            'class': 'coffee-list',
-            html: coffeeShops.join('')
-          }).prependTo('body');
+                $('<ul/>', {
+                  'class': 'coffee-list',
+                  html: coffeeShops.join('')
+                }).prependTo('body');
 
-        }); // getJSON
-    }); // getCurrentPosition
-  } // navigator check
-});
+              }); // getJSON
+          }); // getCurrentPosition
+        } // navigator check
+    });
 
-    </script>
+  </script>
     
     <script type="text/javascript">
       function logResponse(response) {
