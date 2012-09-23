@@ -1,0 +1,3 @@
+[submodule "chapter10/sdk"]
+	path = chapter10/sdk
+	url = git://github.com/facebook/facebook-php-sdk.git
